@@ -30,6 +30,7 @@ func (pagePool PagePool) Read(pageId int) (*Page, error) {
 	//Assignment:B+TreeGet:4:Read the entire page from pagePool.indexFile
 	var bytes []byte
 	var err error = nil
+	bytes, err = pagePool.indexFile.readFrom(int64(pageId*pagePool.pageSize), pagePool.pageSize)
 	if err != nil {
 		return nil, err
 	}
