@@ -2,7 +2,6 @@ package index
 
 import (
 	"bytes"
-	"fmt"
 )
 
 type PageHierarchy struct {
@@ -141,8 +140,7 @@ func (pageHierarchy *PageHierarchy) get(key []byte, page *Page) GetResult {
 			return NewFailedGetResult(err)
 		}
 		//Assignment:B+TreeGet:3:Make a recursive call on the child page & remove fmt.Println
-		fmt.Println(childPage)
-		return GetResult{}
+		return pageHierarchy.get(key, childPage)
 	}
 }
 
