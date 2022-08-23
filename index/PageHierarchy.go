@@ -134,6 +134,7 @@ func (pageHierarchy *PageHierarchy) get(key []byte, page *Page) GetResult {
 		childPageIndex := index
 		if found {
 			//Assignment:B+TreeGet:2:Adjust the value of childPageIndex
+			childPageIndex = index + 1
 		}
 		childPage, err := pageHierarchy.fetchOrCachePage(page.childPageIds[childPageIndex])
 		if err != nil {
