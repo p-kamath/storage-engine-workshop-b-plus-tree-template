@@ -127,8 +127,7 @@ func (pageHierarchy *PageHierarchy) get(key []byte, page *Page) GetResult {
 	index, found := page.Get(key)
 	if page.isLeaf() {
 		if found {
-			//Assignment:B+TreeGet:1:Get the KeyValue pair to be put inside NewKeyAvailableGetResult
-			return NewKeyAvailableGetResult(KeyValuePair{}, index, page)
+			return NewKeyAvailableGetResult(page.GetKeyValuePairAt(index), index, page)
 		}
 		return NewKeyMissingGetResult(index, page)
 	} else {
